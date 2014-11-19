@@ -182,4 +182,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[@"UIImagePickerControllerEditedImage"];
+    _headImageView.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self savevCard];
+}
 @end
