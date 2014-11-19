@@ -18,6 +18,9 @@
     completionBlock _faildBlock;
     
     XMPPvCardCoreDataStorage *_xmppvCardStorage;//电子名片的数据存储模块
+    
+    XMPPCapabilities *_xmppCapabilities;//实体扩展模块
+    XMPPCapabilitiesCoreDataStorage *_xmppCapabilitiesCoreDataStorage;//数据存储
 }
 
 @end
@@ -57,12 +60,20 @@
     //1.实例化XMPPStream
     _xmppStream = [[XMPPStream alloc] init];
     
+    //让XMPP在真机运行时支持后台，在模拟器上市不支持后台服务运行的
+    if (TARGET_IPHONE_SIMULATOR)
+    {
+        [_xmppStream setEnableBackgroundingOnSocket:YES];
+    }
+    
+    
     //2.扩展模块
     //2.1重新连接模块
     _xmppReconnect = [[XMPPReconnect alloc] init];
     //2.2电子名片模块
     _xmppvCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
     _xmppvCardModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:_xmppvCardStorage];
+    _xmppvCardAvatarModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:_xmppvCardModule];
     //2.4花名册模块
     _xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
     _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterStorage];
@@ -71,10 +82,16 @@
     //自动从服务器更新好友记录，例如好友自己更改的名片
     [_xmppRoster setAutoFetchRoster:YES];
     
+    //2.5实体扩展模块
+    _xmppCapabilitiesCoreDataStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
+    _xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:_xmppCapabilitiesCoreDataStorage];
+    
     //3.将重新连接模块添加到XMPPStream
     [_xmppReconnect activate:_xmppStream];
     [_xmppvCardModule activate:_xmppStream];
+    [_xmppvCardAvatarModule activate:_xmppStream];
     [_xmppRoster activate:_xmppStream];
+    [_xmppCapabilities activate:_xmppStream];
     
     //4.添加代理
     //由于所有网络请求都是做基于网络的数据处理，这些数据处理工作于界面UI无关
@@ -91,7 +108,9 @@
     //取消激活在setupStream方法中的扩展模块
     [_xmppReconnect deactivate];
     [_xmppvCardModule deactivate];
+    [_xmppvCardAvatarModule deactivate];
     [_xmppRoster deactivate];
+    [_xmppCapabilities deactivate];
     //断开XMPPStream的连接
     [_xmppStream disconnect];
 
@@ -100,7 +119,9 @@
     _xmppReconnect = nil;
     _xmppvCardModule = nil;
     _xmppvCardStorage = nil;
+    _xmppvCardAvatarModule = nil;
     _xmppRosterStorage = nil;
+    _xmppCapabilities = nil;
     _xmppRoster = nil;
 }
 //通知服务器用户上线
@@ -277,6 +298,12 @@
         //1.2接收来自from的订阅请求
         [_xmppRoster acceptPresenceSubscriptionRequestFrom:from andAddToRoster:YES];
     }
+}
+
+#pragma mark 接收消息
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+{
+    NSLog(@"接收到用户消息 - %@", message);
 }
 
 #pragma mark XMPPRoster代理

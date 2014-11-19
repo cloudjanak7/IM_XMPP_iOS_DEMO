@@ -19,6 +19,8 @@ typedef void(^completionBlock)();
 @property (strong, nonatomic, readonly) XMPPStream *xmppStream;
 //全局的xmppvCardModule
 @property (strong, nonatomic, readonly) XMPPvCardTempModule *xmppvCardModule;
+//全局的xmppvCardAvatarModule
+@property (strong, nonatomic, readonly) XMPPvCardAvatarModule *xmppvCardAvatarModule;
 //全局XMPPRoster模块
 @property (strong, nonatomic, readonly) XMPPRoster *xmppRoster;
 //全局XMPPRosterCoreDataStorage模块
