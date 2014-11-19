@@ -49,6 +49,7 @@
     {
         [_passwordText becomeFirstResponder];
     }
+    
 }
 
 - (IBAction)userLogin:(UIButton *)button
@@ -61,31 +62,39 @@
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录信息不完整" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alert show];
+        return;
     }
     //写入系统偏好
     [[LoginUser sharedLoginUser] setUserName:userName];
     [[LoginUser sharedLoginUser] setPassword:password];
     [[LoginUser sharedLoginUser] setHostName:hostName];
     
-    NSString *actionName = nil;
-//    if (button.tag == 1)
-//    {
-//        [self appDelegate].isRgisterUser = YES;
-//        actionName = @"注册用户";
-//    }
-//    else
-//    {
-//        actionName = @"用户登录";
-//    }
-//    
-//    //让AppDelegate开始连接
-//    //连接成功或失败后提示用户
-//    [[self appDelegate] connectWithcompletion:^{
-//        NSLog(@"%@成功",actionName);
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserLogonState object:nil];
-//    } failed:^{
-//        NSLog(@"%@失败",actionName);
-//    }];
+    NSString *errorMessage = nil;
+    if (button.tag == 1)
+    {
+        [self appDelegate].isRgisterUser = YES;
+        errorMessage = @"注册用户失败";
+    }
+    else
+    {
+        errorMessage = @"用户登录失败";
+    }
+    
+    //让AppDelegate开始连接
+    //连接成功或失败后提示用户
+    [[self appDelegate] connectWithcompletion:nil failed:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:errorMessage delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        if (button.tag == 1)
+        {
+            [_userNameText becomeFirstResponder];
+        }
+        else
+        {
+            _passwordText.text = @"";
+            [_passwordText becomeFirstResponder];
+        }
+    }];
     
 }
 
