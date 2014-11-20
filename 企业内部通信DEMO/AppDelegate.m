@@ -86,12 +86,17 @@
     _xmppCapabilitiesCoreDataStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
     _xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:_xmppCapabilitiesCoreDataStorage];
     
+    //2.6消息归档模块
+    _xmppMessageArchivingCoreDataStorage = [[XMPPMessageArchivingCoreDataStorage alloc] init];
+    _xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:_xmppMessageArchivingCoreDataStorage];
+    
     //3.将重新连接模块添加到XMPPStream
     [_xmppReconnect activate:_xmppStream];
     [_xmppvCardModule activate:_xmppStream];
     [_xmppvCardAvatarModule activate:_xmppStream];
     [_xmppRoster activate:_xmppStream];
     [_xmppCapabilities activate:_xmppStream];
+    [_xmppMessageArchiving activate:_xmppStream];
     
     //4.添加代理
     //由于所有网络请求都是做基于网络的数据处理，这些数据处理工作于界面UI无关
@@ -111,6 +116,7 @@
     [_xmppvCardAvatarModule deactivate];
     [_xmppRoster deactivate];
     [_xmppCapabilities deactivate];
+    [_xmppMessageArchiving deactivate];
     //断开XMPPStream的连接
     [_xmppStream disconnect];
 
@@ -120,6 +126,7 @@
     _xmppvCardModule = nil;
     _xmppvCardStorage = nil;
     _xmppvCardAvatarModule = nil;
+    _xmppMessageArchiving = nil;
     _xmppRosterStorage = nil;
     _xmppCapabilities = nil;
     _xmppRoster = nil;

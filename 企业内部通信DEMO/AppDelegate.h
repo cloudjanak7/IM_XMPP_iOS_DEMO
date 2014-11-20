@@ -25,6 +25,9 @@ typedef void(^completionBlock)();
 @property (strong, nonatomic, readonly) XMPPRoster *xmppRoster;
 //全局XMPPRosterCoreDataStorage模块
 @property (strong, nonatomic, readonly) XMPPRosterCoreDataStorage *xmppRosterStorage;
+//消息存档(归档)
+@property (nonatomic, strong, readonly) XMPPMessageArchiving *xmppMessageArchiving;
+@property (nonatomic, strong, readonly) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 
 @property (nonatomic, assign) BOOL isRgisterUser;
 
