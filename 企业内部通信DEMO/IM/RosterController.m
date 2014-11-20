@@ -120,12 +120,17 @@
     XMPPUserCoreDataStorageObject *user = [_fetchedReseultController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = user.displayName;
-    //    cell.imageView.image = [self loadUserImage:user];
+    cell.imageView.image = [self loadUserImage:user];
     
     return cell;
 }
 
 #pragma mark - tableview delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
@@ -155,14 +160,20 @@
     }
 }
 
-//#pragma mark 加载头像
-//- (UIImage *)loadUserImage:(XMPPUserCoreDataStorageObject *)user
-//{
-//    if (user.photo)
-//    {
-//        return user.photo;
-//    }
-//
-//    NSData *photoData = [self appDelegate] xmp
-//}
+#pragma mark - 加载头像
+- (UIImage *)loadUserImage:(XMPPUserCoreDataStorageObject *)user
+{
+    if (user.photo)
+    {
+        //user有直接返回
+        return user.photo;
+    }
+    //没有，从用户头像模块取用户头像数据
+    NSData *photoData = [[xmppDelegate xmppvCardAvatarModule] photoDataForJID:user.jid];
+    if (photoData)
+    {
+        return [UIImage imageWithData:photoData];
+    }
+    return [UIImage imageNamed:@"DefaultProfileHead"];
+}
 @end

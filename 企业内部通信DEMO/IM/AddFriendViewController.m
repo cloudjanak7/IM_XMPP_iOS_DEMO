@@ -57,7 +57,12 @@
         return;
     }
     //4.判断是否已经是自己的好友
-    
+    //userExistsWithJID方法仅用于检测JID是否是用户的好友，而不是检测是否是合法的用户
+    if ([[xmppDelegate xmppRosterStorage] userExistsWithJID:[XMPPJID jidWithString:name] xmppStream:[xmppDelegate xmppStream]])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"添加好友已经是好友无需添加" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
     //5.发送订阅请求
     [[xmppDelegate xmppRoster] subscribePresenceToUser:[XMPPJID jidWithString:name]];
     //6.提示用户并返回上级页面
