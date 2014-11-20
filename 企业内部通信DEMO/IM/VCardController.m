@@ -85,11 +85,12 @@
     //保存电子名片
     [[[self appDelegate] xmppvCardModule] updateMyvCardTemp:myCard];
     
+    NSData *photoData = [[xmppDelegate xmppvCardAvatarModule] photoDataForJID:myCard.jid];
     //使用myCard
-    if (myCard.photo.length != 0 && myCard.photo)
+    if (photoData)
     {
         NSLog(@"myCard --- %ld", myCard.photo.length);
-        _headImageView.image = [UIImage imageWithData:myCard.photo];
+        _headImageView.image = [UIImage imageWithData:photoData];
     }
     
     _nickNameText.text = myCard.nickname;
@@ -186,7 +187,7 @@
 {
     UIImage *image = info[@"UIImagePickerControllerEditedImage"];
     _headImageView.image = image;
-    [self dismissViewControllerAnimated:YES completion:nil];
     [self savevCard];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
