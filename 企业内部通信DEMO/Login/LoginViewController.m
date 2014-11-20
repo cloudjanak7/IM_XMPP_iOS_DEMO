@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "LoginUser.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
