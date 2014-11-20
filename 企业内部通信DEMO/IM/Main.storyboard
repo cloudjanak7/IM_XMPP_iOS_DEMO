@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dv2-JY-frk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dv2-JY-frk">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -25,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-247" y="-440"/>
         </scene>
-        <!--Table View Controller - 通信-->
+        <!--通信-->
         <scene sceneID="WtQ-Ow-Hs5">
             <objects>
                 <tableViewController id="HKH-TG-Y8H" sceneMemberID="viewController">
@@ -54,7 +55,7 @@
             </objects>
             <point key="canvasLocation" x="853" y="-1151"/>
         </scene>
-        <!--Roster Controller - 名册-->
+        <!--名册-->
         <scene sceneID="c8s-iz-0V3">
             <objects>
                 <tableViewController id="S9x-Wh-1Ce" customClass="RosterController" sceneMemberID="viewController">
@@ -63,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RosterCell" id="XfV-km-N4e">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RosterCell" id="XfV-km-N4e">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XfV-km-N4e" id="Cjl-e1-45o">
@@ -84,12 +85,98 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="LjF-oY-xTe" kind="push" identifier="ChatSegue" id="AYe-ZX-B7e"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSz-bU-Hgk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="853" y="-440"/>
         </scene>
-        <!--Add Friend View Controller - 新建好友-->
+        <!--Chat Message View Controller-->
+        <scene sceneID="Gmb-Gg-9nO">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="LjF-oY-xTe" customClass="ChatMessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yAh-wY-xkH"/>
+                        <viewControllerLayoutGuide type="bottom" id="seg-VG-XPL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZgE-VP-Myl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5Qr-vk-OKD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatFromCell" id="ek5-U3-TFG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ek5-U3-TFG" id="1lx-G1-qPf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatToCell" id="JlF-0w-ouV">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JlF-0w-ouV" id="1bc-3A-6Bp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LjF-oY-xTe" id="crU-ZG-MLT"/>
+                                    <outlet property="delegate" destination="LjF-oY-xTe" id="aAB-p6-4Oz"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hO2-Gj-1xp" userLabel="View - 输入试图">
+                                <rect key="frame" x="0.0" y="475" width="320" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQS-zd-l1L">
+                                        <rect key="frame" x="8" y="7" width="304" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="LjF-oY-xTe" id="qbl-bR-8Kz"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rQS-zd-l1L" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hO2-Gj-1xp" secondAttribute="leading" constant="8" id="MfO-uD-IEg"/>
+                                    <constraint firstAttribute="bottom" secondItem="rQS-zd-l1L" secondAttribute="bottom" constant="7" id="UAh-pa-IPP"/>
+                                    <constraint firstAttribute="height" constant="44" id="V1h-Bc-KCG"/>
+                                    <constraint firstItem="rQS-zd-l1L" firstAttribute="top" secondItem="hO2-Gj-1xp" secondAttribute="top" constant="7" id="Vu0-m0-vYH"/>
+                                    <constraint firstItem="rQS-zd-l1L" firstAttribute="leading" secondItem="hO2-Gj-1xp" secondAttribute="leading" constant="8" id="bfE-LU-23Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="rQS-zd-l1L" secondAttribute="trailing" constant="8" id="j6z-Xu-MHc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Qr-vk-OKD" firstAttribute="top" secondItem="yAh-wY-xkH" secondAttribute="bottom" constant="-64" id="8CC-9m-08O"/>
+                            <constraint firstItem="seg-VG-XPL" firstAttribute="top" secondItem="hO2-Gj-1xp" secondAttribute="bottom" id="JOW-E3-iYV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Qr-vk-OKD" secondAttribute="trailing" constant="-16" id="OgM-Hw-jMG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hO2-Gj-1xp" secondAttribute="trailing" constant="-16" id="VBC-eh-1O6"/>
+                            <constraint firstItem="hO2-Gj-1xp" firstAttribute="top" secondItem="5Qr-vk-OKD" secondAttribute="bottom" id="Ypb-Px-Duh"/>
+                            <constraint firstItem="seg-VG-XPL" firstAttribute="top" secondItem="hO2-Gj-1xp" secondAttribute="bottom" priority="500" constant="252" id="ZMA-zo-LKW"/>
+                            <constraint firstItem="hO2-Gj-1xp" firstAttribute="leading" secondItem="ZgE-VP-Myl" secondAttribute="leadingMargin" constant="-16" id="itW-aQ-UVI"/>
+                            <constraint firstItem="seg-VG-XPL" firstAttribute="top" secondItem="hO2-Gj-1xp" secondAttribute="bottom" priority="700" constant="216" id="j9a-6w-mL4"/>
+                            <constraint firstItem="5Qr-vk-OKD" firstAttribute="leading" secondItem="ZgE-VP-Myl" secondAttribute="leadingMargin" constant="-16" id="nnb-kx-i8L"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uIa-MV-j3C"/>
+                    <connections>
+                        <outlet property="englishConstraint" destination="j9a-6w-mL4" id="WhE-7d-vO0"/>
+                        <outlet property="noInputTextConstraint" destination="JOW-E3-iYV" id="icu-bR-8gX"/>
+                        <outlet property="tableView" destination="5Qr-vk-OKD" id="Xkd-Kf-jzm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N6p-8b-pFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-1151"/>
+        </scene>
+        <!--新建好友-->
         <scene sceneID="mIK-Wi-i97">
             <objects>
                 <viewController id="cCr-kV-vwU" customClass="AddFriendViewController" sceneMemberID="viewController">
@@ -101,9 +188,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入要添加好友的账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Zb-5V-mk9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入要添加好友的账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Zb-5V-mk9">
                                 <rect key="frame" x="20" y="84" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="5Le-jy-mZH"/>
                                 </constraints>
@@ -128,9 +214,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7P-QJ-TT4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="-440"/>
+            <point key="canvasLocation" x="1374" y="-440"/>
         </scene>
-        <!--Navigation Controller - 名册-->
+        <!--名册-->
         <scene sceneID="4nd-8U-cXr">
             <objects>
                 <navigationController definesPresentationContext="YES" id="E5l-LR-b0a" sceneMemberID="viewController">
@@ -146,7 +232,7 @@
             </objects>
             <point key="canvasLocation" x="319" y="-440"/>
         </scene>
-        <!--Card Controller - 我的名片-->
+        <!--我的名片-->
         <scene sceneID="6Rn-Za-Nt9">
             <objects>
                 <tableViewController id="r2y-MF-t9q" customClass="VCardController" sceneMemberID="viewController">
@@ -203,8 +289,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiI-Na-rCi">
-                                                    <rect key="frame" x="20" y="11" width="27" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiI-Na-rCi">
+                                                    <rect key="frame" x="20" y="11" width="34" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -399,7 +485,7 @@
             </objects>
             <point key="canvasLocation" x="1230" y="301"/>
         </scene>
-        <!--Navigation Controller - 我的名片-->
+        <!--我的名片-->
         <scene sceneID="MAT-mx-e99">
             <objects>
                 <navigationController definesPresentationContext="YES" id="a6O-ys-kec" sceneMemberID="viewController">
@@ -415,7 +501,7 @@
             </objects>
             <point key="canvasLocation" x="319" y="301"/>
         </scene>
-        <!--Navigation Controller - 通信-->
+        <!--通信-->
         <scene sceneID="mLa-4E-ieI">
             <objects>
                 <navigationController definesPresentationContext="YES" id="hTe-Iz-RnD" sceneMemberID="viewController">
