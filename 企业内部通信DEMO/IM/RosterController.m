@@ -9,6 +9,7 @@
 #import "RosterController.h"
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "ChatMessageViewController.h"
 
 @interface RosterController () <NSFetchedResultsControllerDelegate, UIAlertViewDelegate>
 {
@@ -128,7 +129,7 @@
 #pragma mark - tableview delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"ChatSegue" sender:nil];
+    [self performSegueWithIdentifier:@"ChatSegue" sender:indexPath];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -175,5 +176,22 @@
         return [UIImage imageWithData:photoData];
     }
     return [UIImage imageNamed:@"DefaultProfileHead"];
+}
+
+#pragma mark - 准备Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSIndexPath *)indexPath
+{
+    if ([segue.identifier isEqualToString:@"ChatSegue"])
+    {
+        ChatMessageViewController *controller = segue.destinationViewController;
+        //获取当前选中的用户
+        XMPPUserCoreDataStorageObject *user = [_fetchedReseultController objectAtIndexPath:indexPath];
+        controller.bareJidStr = user.jidStr;
+        NSData *barePhoto = [[xmppDelegate xmppvCardAvatarModule] photoDataForJID:user.jid];
+        controller.bareImage = [UIImage imageWithData:barePhoto];
+        NSString *myJID = [LoginUser sharedLoginUser].myJIDName;
+        NSData *myPhoto = [[xmppDelegate xmppvCardAvatarModule] photoDataForJID:[XMPPJID jidWithString:myJID]];
+        controller.myImage = [UIImage imageWithData:myPhoto];
+    }
 }
 @end
