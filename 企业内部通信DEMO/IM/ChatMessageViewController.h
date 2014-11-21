@@ -10,4 +10,11 @@
 
 @interface ChatMessageViewController : UIViewController
 
+//对话方JID
+@property (nonatomic, strong) NSString *bareJidStr;
+//对话方头像
+@property (nonatomic, strong) UIImage *bareImage;
+//我的头像
+@property (nonatomic, strong) UIImage *myImage;
+
 @end
