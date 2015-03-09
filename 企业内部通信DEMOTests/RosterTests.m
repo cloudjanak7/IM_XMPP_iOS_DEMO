@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "AppDelegate.h"
 
 @interface RosterTests : XCTestCase
 
-@property (nonatomic, strong) AppDelegate *delegate;
 
 @end
 
@@ -20,8 +18,7 @@
 
 - (void)setUp {
     [super setUp];
-    //做初始化工作
-    self.delegate = xmppDelegate;
+
 }
 
 - (void)tearDown {
@@ -31,7 +28,7 @@
 
 - (void)testExample {
     NSString *name = @"guo@127.0.0.1";
-    BOOL exist = [[xmppDelegate xmppRosterStorage] userExistsWithJID:[XMPPJID jidWithString:name] xmppStream:[xmppDelegate xmppStream]];
+    BOOL exist = [[[XMPPTool sharedXMPPTool] xmppRosterStorage] userExistsWithJID:[XMPPJID jidWithString:name] xmppStream:[[XMPPTool sharedXMPPTool] xmppStream]];
     NSLog(@" --------- %d", exist);
 }
 

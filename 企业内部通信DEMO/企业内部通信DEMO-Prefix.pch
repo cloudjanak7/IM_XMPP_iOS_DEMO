@@ -6,8 +6,8 @@
 
 #import <Availability.h>
 
-#ifndef __IPHONE_5_0
-#warning "This project uses features only available in iOS SDK 5.0 and later."
+#ifndef __IPHONE_6_0
+#warning "This project uses features only available in iOS SDK 6.0 and later."
 #endif
 
 #ifdef __OBJC__
@@ -16,4 +16,17 @@
 #endif
 
 #import "NSString+Helper.h"
-#import "LoginUser.h"
+#import "UserInfo.h"
+#import "CategoryWF.h"
+#import "XMPPTool.h"
+#import "NSMutableDictionary+CH.h"
+#import "MJExtension.h"
+#import "CHCoreDataTool.h"
+
+#define iOS8 [[UIDevice currentDevice].systemVersion doubleValue] > 8.0
+
+#ifdef DEBUG
+#define CHLog(fmt, ...) {NSLog((@"\n%s \n[Line %d]\n " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+#else
+#define NSLog(...)
+#endif

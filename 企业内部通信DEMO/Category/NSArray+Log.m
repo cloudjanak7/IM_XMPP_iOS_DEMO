@@ -11,7 +11,7 @@
 
 - (NSString *)descriptionWithLocale:(id)locale
 {
-    NSMutableString *strM = [NSMutableString stringWithFormat:@"%d (\n", self.count];
+    NSMutableString *strM = [NSMutableString stringWithFormat:@"【count:%u】 (\n", (unsigned int)self.count];
 
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [strM appendFormat:@"\t%@", obj];
@@ -26,3 +26,30 @@
 }
 
 @end
+
+@implementation NSDictionary (NSLog)
+
+- (NSString *)descriptionWithLocale:(id)locale
+{
+    NSMutableString *strM = [NSMutableString string];
+    [strM appendString:@"{\n"];
+    for (NSString *keyStr in self.allKeys)
+    {
+        [strM appendFormat:@"\t\"%@\" = %@,\n", keyStr, self[keyStr]];
+    }
+    
+    [strM appendString:@"}"];
+    
+    NSRange range = [strM rangeOfString:@"," options:NSBackwardsSearch];
+    
+    if (range.length > 0)
+    {
+        [strM deleteCharactersInRange:range];
+    }
+    
+    
+    return strM;
+}
+
+@end
+

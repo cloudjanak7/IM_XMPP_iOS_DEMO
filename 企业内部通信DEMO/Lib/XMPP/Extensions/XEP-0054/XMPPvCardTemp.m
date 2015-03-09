@@ -143,21 +143,32 @@ NSString *const kXMPPvCardTempElement = @"vCard";
 
 
 - (void)setPhoto:(NSData *)data {
-	NSXMLElement *photo = [self elementForName:@"PHOTO"];
-	
-	if (photo == nil) {
-		photo = [NSXMLElement elementWithName:@"PHOTO"];
-		[self addChild:photo];
-	}
-	
-	NSXMLElement *binval = [photo elementForName:@"BINVAL"];
-	
-	if (binval == nil) {
-		binval = [NSXMLElement elementWithName:@"BINVAL"];
-		[photo addChild:binval];
-	}
-	
-	[binval setStringValue:[data xmpp_base64Encoded]];
+    
+    NSXMLElement *photo = [self elementForName:@"PHOTO"];
+    
+    if(photo)
+    {
+        [self removeChildAtIndex:[[self children] indexOfObject:photo]];
+    }
+    
+    if([data length])
+    {    
+        NSXMLElement *photo = [NSXMLElement elementWithName:@"PHOTO"];
+        [self addChild:photo];
+        
+        NSString *imageType = [data xmpp_imageType];
+        
+        if([imageType length])
+        {
+            NSXMLElement *type = [NSXMLElement elementWithName:@"TYPE"];
+            [photo addChild:type];
+            [type setStringValue:imageType];
+        }
+        
+        NSXMLElement *binval = [NSXMLElement elementWithName:@"BINVAL"];
+        [photo addChild:binval];
+        [binval setStringValue:[data xmpp_base64Encoded]];
+    }
 }
 
 
@@ -310,10 +321,44 @@ NSString *const kXMPPvCardTempElement = @"vCard";
 - (void)clearTelecomsAddresses { }
 
 
-- (NSArray *)emailAddresses { return nil; }
+- (NSArray *)emailAddresses
+{
+    //1.获取EMAIL标签
+    NSXMLElement *emailE =  [self elementForName:@"EMAIL"];
+    
+    // 2.通过EMAIL标签找到USERID
+    NSXMLElement  *userIDE = [emailE elementForName:@"USERID"];
+    
+    NSString *email = [userIDE stringValue];
+    if (email.length > 0) {
+        return @[email];
+    }
+    
+    return nil;
+}
 - (void)addEmailAddress:(XMPPvCardTempEmail *)email { }
 - (void)removeEmailAddress:(XMPPvCardTempEmail *)email { }
-- (void)setEmailAddresses:(NSArray *)emails { }
+- (void)setEmailAddresses:(NSArray *)emails
+{
+    if (emails.count == 0) {
+        return;
+    }
+    // 1.获取EMAIL标签
+    NSXMLElement *emailE =  [self elementForName:@"EMAIL"];
+    
+    // 2.移除USERID的标签
+    [emailE removeElementForName:@"USERID"];
+    
+    
+    // 3.创建新USERID的标签
+    
+    //只取第一个邮件保存
+    NSString *emailStr = emails[0];
+    NSXMLElement  *userIDE = [NSXMLElement elementWithName:@"USERID" stringValue:emailStr];
+    
+    // 4.添加到EMail标签
+    [emailE addChild:userIDE];
+}
 - (void)clearEmailAddresses { }
 
 

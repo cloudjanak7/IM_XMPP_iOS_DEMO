@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1RM-uw-Vl2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1RM-uw-Vl2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -20,42 +20,59 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeV-ae-7og">
                                 <rect key="frame" x="0.0" y="60" width="320" height="219"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入用户名" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ow0-1y-4Rq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ow0-1y-4Rq">
                                         <rect key="frame" x="20" y="20" width="280" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="IVe-SQ-vDW"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="1RM-uw-Vl2" id="31G-rV-Ktv"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入密码" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-sU-cOn">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-sU-cOn">
                                         <rect key="frame" x="20" y="66" width="280" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="a0p-xP-mbt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="1RM-uw-Vl2" id="wAC-Fg-HEo"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入服务器地址" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kf-ZV-V5J">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入服务器地址" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kf-ZV-V5J">
                                         <rect key="frame" x="20" y="114" width="280" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Sm2-BP-vHm"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="1RM-uw-Vl2" id="7O1-VY-DBR"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBe-eU-z3d">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBe-eU-z3d">
                                         <rect key="frame" x="30" y="162" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="8X6-OS-kT1"/>
+                                            <constraint firstAttribute="height" constant="30" id="Ceb-TO-rg1"/>
+                                        </constraints>
                                         <state key="normal" title="注册">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="userLogin:" destination="1RM-uw-Vl2" eventType="touchUpInside" id="v2J-gX-e54"/>
+                                            <action selector="registClick:" destination="1RM-uw-Vl2" eventType="touchUpInside" id="zPP-pl-QTm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csD-va-Zsg">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csD-va-Zsg">
                                         <rect key="frame" x="187" y="162" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="MFr-SR-F95"/>
+                                            <constraint firstAttribute="height" constant="30" id="iSk-vK-An7"/>
+                                        </constraints>
                                         <state key="normal" title="登录">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,9 +83,24 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RBe-eU-z3d" firstAttribute="leading" secondItem="xeV-ae-7og" secondAttribute="leading" constant="30" id="256-Gt-iFJ"/>
+                                    <constraint firstItem="2kf-ZV-V5J" firstAttribute="leading" secondItem="xeV-ae-7og" secondAttribute="leading" constant="20" id="49L-Kh-NdO"/>
+                                    <constraint firstItem="RBe-eU-z3d" firstAttribute="top" secondItem="2kf-ZV-V5J" secondAttribute="bottom" constant="18" id="60D-j2-aPh"/>
+                                    <constraint firstItem="2kf-ZV-V5J" firstAttribute="top" secondItem="SNb-sU-cOn" secondAttribute="bottom" constant="18" id="6dC-Fy-hiw"/>
+                                    <constraint firstAttribute="trailing" secondItem="SNb-sU-cOn" secondAttribute="trailing" constant="20" id="Bc4-T7-XbC"/>
+                                    <constraint firstItem="SNb-sU-cOn" firstAttribute="top" secondItem="Ow0-1y-4Rq" secondAttribute="bottom" constant="16" id="C9X-Kv-SNx"/>
+                                    <constraint firstItem="Ow0-1y-4Rq" firstAttribute="leading" secondItem="xeV-ae-7og" secondAttribute="leading" constant="20" id="EPM-nA-kpI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ow0-1y-4Rq" secondAttribute="trailing" constant="20" id="Oz0-dc-gLI"/>
+                                    <constraint firstItem="SNb-sU-cOn" firstAttribute="leading" secondItem="xeV-ae-7og" secondAttribute="leading" constant="20" id="R6H-w4-Dyg"/>
+                                    <constraint firstAttribute="trailing" secondItem="2kf-ZV-V5J" secondAttribute="trailing" constant="20" id="TcQ-cY-F6I"/>
+                                    <constraint firstItem="csD-va-Zsg" firstAttribute="top" secondItem="2kf-ZV-V5J" secondAttribute="bottom" constant="18" id="WCk-gb-w9U"/>
+                                    <constraint firstItem="Ow0-1y-4Rq" firstAttribute="top" secondItem="xeV-ae-7og" secondAttribute="top" constant="20" id="lgd-C1-KRa"/>
+                                    <constraint firstAttribute="trailing" secondItem="csD-va-Zsg" secondAttribute="trailing" constant="33" id="xec-Gj-wZH"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版权所有2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z81-5b-fCn">
-                                <rect key="frame" x="0.0" y="287" width="320" height="15"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版权所有2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z81-5b-fCn">
+                                <rect key="frame" x="0.0" y="503" width="320" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,12 +108,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Z81-5b-fCn" firstAttribute="top" secondItem="xeV-ae-7og" secondAttribute="bottom" constant="8" id="05v-tp-zxX"/>
-                            <constraint firstItem="Z81-5b-fCn" firstAttribute="leading" secondItem="KVT-aK-ljn" secondAttribute="leading" id="CxG-Ej-FBk"/>
                             <constraint firstItem="xeV-ae-7og" firstAttribute="top" secondItem="Bo5-0T-K9y" secondAttribute="bottom" constant="40" id="DJL-dB-iUn"/>
-                            <constraint firstItem="xeV-ae-7og" firstAttribute="trailing" secondItem="Z81-5b-fCn" secondAttribute="trailing" id="H5t-nG-FnI"/>
-                            <constraint firstItem="xeV-ae-7og" firstAttribute="leading" secondItem="Z81-5b-fCn" secondAttribute="leading" id="YNg-ul-Dgi"/>
-                            <constraint firstAttribute="trailing" secondItem="Z81-5b-fCn" secondAttribute="trailing" id="mh3-Kh-6rg"/>
+                            <constraint firstAttribute="trailing" secondItem="Z81-5b-fCn" secondAttribute="trailing" id="Qgo-Fy-99c"/>
+                            <constraint firstItem="xeV-ae-7og" firstAttribute="leading" secondItem="KVT-aK-ljn" secondAttribute="leading" id="Sbv-Wm-dDw"/>
+                            <constraint firstItem="Z81-5b-fCn" firstAttribute="leading" secondItem="KVT-aK-ljn" secondAttribute="leading" id="f89-oi-eG9"/>
+                            <constraint firstAttribute="trailing" secondItem="xeV-ae-7og" secondAttribute="trailing" id="kjn-EY-LcB"/>
+                            <constraint firstItem="eAM-9x-Oqi" firstAttribute="top" secondItem="Z81-5b-fCn" secondAttribute="bottom" constant="50" id="kzU-YE-I75"/>
                             <constraint firstAttribute="bottom" secondItem="xeV-ae-7og" secondAttribute="bottom" constant="289" id="r1c-U8-vcj"/>
                         </constraints>
                     </view>

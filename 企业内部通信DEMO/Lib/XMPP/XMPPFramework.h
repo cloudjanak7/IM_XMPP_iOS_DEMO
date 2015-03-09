@@ -58,7 +58,7 @@
 //
 //#import "XMPPPubSub.h"
 //
-//#import "TURNSocket.h"
+#import "TURNSocket.h"
 //
 //#import "XMPPDateTimeProfiles.h"
 //#import "NSDate+XMPPDateTimeProfiles.h"

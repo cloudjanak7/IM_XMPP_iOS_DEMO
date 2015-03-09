@@ -10,10 +10,5 @@
 
 @interface LoginViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *userNameText;
-@property (strong, nonatomic) IBOutlet UITextField *passwordText;
-@property (strong, nonatomic) IBOutlet UITextField *hostNameText;
 
-@property (strong, nonatomic) IBOutlet UIButton *loginBtn;
-@property (strong, nonatomic) IBOutlet UIButton *registerBtn;
 @end
