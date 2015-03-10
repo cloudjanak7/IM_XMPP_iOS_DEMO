@@ -80,6 +80,8 @@
     CHTitleView *titleView = [CHTitleView titleView];
     [titleView setTitle:_bareJidStr];
     self.navigationItem.titleView = titleView;
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ChatBackgroundThumb_00.jpg"]];
 }
 
 #pragma mark 回退，最近消息列表装载

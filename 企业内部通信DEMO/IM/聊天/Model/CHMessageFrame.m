@@ -79,8 +79,12 @@
 /** 录音消息 */
 - (CGSize)cellForRecordMessage:(MessageObject *)msgObj
 {
-    _msgObj.recordText = [NSString stringWithFormat:@"     %u s     ", (unsigned int)msgObj.recordTime];
-    return [self cellForTextMessage:_msgObj.recordText];
+    _msgObj.recordText = [NSString stringWithFormat:@"     %u \"     ", (unsigned int)msgObj.recordTime];
+    CGSize textSize = [self cellForTextMessage:_msgObj.recordText];
+    UIImage *image = [UIImage imageNamed:@"SenderVoiceNodePlaying003"];
+    CGFloat width = textSize.width + image.size.width;
+    CGFloat height = textSize.height > image.size.width ? textSize.height : image.size.width;
+    return CGSizeMake(width, height);
 }
 
 #pragma mark json转模型

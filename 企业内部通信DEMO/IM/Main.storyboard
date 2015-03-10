@@ -119,14 +119,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JlF-0w-ouV" id="1bc-3A-6Bp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="uP1-gK-43z">
-                                                    <rect key="frame" x="147" y="10" width="77" height="54"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="uP1-gK-43z" customClass="CHMessageView">
+                                                    <rect key="frame" x="134" y="10" width="100" height="54"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="E0H-3u-8AK"/>
-                                                        <constraint firstAttribute="width" constant="77" id="zvV-Y7-ESj"/>
+                                                        <constraint firstAttribute="width" constant="100" id="zvV-Y7-ESj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="20"/>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="15" maxY="20"/>
                                                     <state key="normal" backgroundImage="SenderTextNodeBkg">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -136,7 +136,7 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="sKo-cH-Gaj">
-                                                    <rect key="frame" x="232" y="10" width="60" height="60"/>
+                                                    <rect key="frame" x="242" y="10" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="ENN-KS-Aoh"/>
                                                         <constraint firstAttribute="height" constant="60" id="kxg-nO-FGu"/>
@@ -148,23 +148,36 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1&quot;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlf-ed-Aiz">
+                                                    <rect key="frame" x="92" y="29" width="40" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="SYl-C6-DU8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="sKo-cH-Gaj" secondAttribute="trailing" constant="20" id="1xm-R3-IYU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sKo-cH-Gaj" secondAttribute="trailing" constant="10" id="1xm-R3-IYU"/>
                                                 <constraint firstItem="sKo-cH-Gaj" firstAttribute="leading" secondItem="uP1-gK-43z" secondAttribute="trailing" constant="8" id="8Ki-Ts-cES"/>
+                                                <constraint firstItem="uP1-gK-43z" firstAttribute="leading" secondItem="hlf-ed-Aiz" secondAttribute="trailing" constant="2" id="9Yp-JR-MU7"/>
                                                 <constraint firstItem="uP1-gK-43z" firstAttribute="top" secondItem="sKo-cH-Gaj" secondAttribute="top" id="AiD-P4-Nrc"/>
                                                 <constraint firstAttribute="trailing" secondItem="zNV-oW-Qwa" secondAttribute="trailing" id="OL3-tC-Ah2"/>
+                                                <constraint firstItem="hlf-ed-Aiz" firstAttribute="top" secondItem="zNV-oW-Qwa" secondAttribute="bottom" constant="19" id="STB-cl-PSB"/>
                                                 <constraint firstItem="zNV-oW-Qwa" firstAttribute="leading" secondItem="1bc-3A-6Bp" secondAttribute="leading" id="Tdc-Qg-gO9"/>
+                                                <constraint firstAttribute="bottom" secondItem="hlf-ed-Aiz" secondAttribute="bottom" constant="35" id="ahE-be-bqh"/>
                                                 <constraint firstItem="zNV-oW-Qwa" firstAttribute="top" secondItem="1bc-3A-6Bp" secondAttribute="top" id="goa-ZD-BVb"/>
                                                 <constraint firstItem="uP1-gK-43z" firstAttribute="top" secondItem="zNV-oW-Qwa" secondAttribute="bottom" id="lmY-Qv-svF"/>
                                                 <constraint firstItem="sKo-cH-Gaj" firstAttribute="top" secondItem="1bc-3A-6Bp" secondAttribute="topMargin" constant="2" id="yKJ-lL-Qa4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnHeightConstraint" destination="E0H-3u-8AK" id="pjA-Hw-rfU"/>
+                                            <outlet property="btnWidthConstraint" destination="zvV-Y7-ESj" id="PUU-vh-XrN"/>
                                             <outlet property="headImageView" destination="sKo-cH-Gaj" id="f2s-9D-EeX"/>
                                             <outlet property="messageButton" destination="uP1-gK-43z" id="mnW-5X-4K0"/>
-                                            <outlet property="messageHeightConstraint" destination="E0H-3u-8AK" id="fTT-i3-RuJ"/>
-                                            <outlet property="messageWidthConstraint" destination="zvV-Y7-ESj" id="2GF-wy-bgW"/>
+                                            <outlet property="recordTimeLabel" destination="hlf-ed-Aiz" id="dAm-e1-3AA"/>
                                             <outlet property="timeStampLabel" destination="zNV-oW-Qwa" id="2gx-Fq-lEU"/>
                                         </connections>
                                     </tableViewCell>
@@ -175,51 +188,63 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="GTH-cd-AGe">
-                                                    <rect key="frame" x="28" y="10" width="60" height="60"/>
+                                                    <rect key="frame" x="18" y="10" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="lGq-BS-uxl"/>
                                                         <constraint firstAttribute="width" constant="60" id="qCu-ND-gLw"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gcY-C6-QKn">
-                                                    <rect key="frame" x="88" y="10" width="74" height="54"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="54" id="Ijp-06-q4y"/>
-                                                        <constraint firstAttribute="width" constant="74" id="pBd-Va-PL6"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="10" maxY="20"/>
-                                                    <state key="normal" backgroundImage="ReceiverTextNodeBkg">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <state key="highlighted" backgroundImage="ReceiverTextNodeBkgHL"/>
-                                                    <connections>
-                                                        <action selector="playRecord:" destination="LjF-oY-xTe" eventType="touchUpInside" id="LMx-8R-12k"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MW-Bw-egT">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <color key="textColor" white="0.56935160429999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1&quot;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axG-EP-M7a">
+                                                    <rect key="frame" x="180" y="26" width="42" height="19"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="4VK-iW-e90"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="gcY-C6-QKn" customClass="CHMessageView">
+                                                    <rect key="frame" x="78" y="10" width="100" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="Ijp-06-q4y"/>
+                                                        <constraint firstAttribute="width" constant="100" id="pBd-Va-PL6"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="10" maxX="5" maxY="20"/>
+                                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" backgroundImage="ReceiverTextNodeBkg"/>
+                                                    <state key="highlighted" backgroundImage="ReceiverTextNodeBkgHL"/>
+                                                    <connections>
+                                                        <action selector="playRecord:" destination="LjF-oY-xTe" eventType="touchUpInside" id="LMx-8R-12k"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="axG-EP-M7a" firstAttribute="leading" secondItem="gcY-C6-QKn" secondAttribute="trailing" constant="2" id="8rc-HH-6eO"/>
                                                 <constraint firstItem="3MW-Bw-egT" firstAttribute="leading" secondItem="1lx-G1-qPf" secondAttribute="leading" id="FJ7-XO-Kaz"/>
                                                 <constraint firstItem="GTH-cd-AGe" firstAttribute="top" secondItem="1lx-G1-qPf" secondAttribute="topMargin" constant="2" id="MdU-Vn-C3z"/>
                                                 <constraint firstItem="gcY-C6-QKn" firstAttribute="top" secondItem="GTH-cd-AGe" secondAttribute="top" id="WH7-NA-oCR"/>
+                                                <constraint firstAttribute="bottom" secondItem="axG-EP-M7a" secondAttribute="bottom" constant="35" id="ZNd-1T-ev8"/>
                                                 <constraint firstItem="gcY-C6-QKn" firstAttribute="leading" secondItem="GTH-cd-AGe" secondAttribute="trailing" id="gLM-fA-u6m"/>
+                                                <constraint firstItem="axG-EP-M7a" firstAttribute="top" secondItem="3MW-Bw-egT" secondAttribute="bottom" constant="16" id="jiq-cS-pE9"/>
                                                 <constraint firstItem="3MW-Bw-egT" firstAttribute="top" secondItem="1lx-G1-qPf" secondAttribute="top" id="nQo-rc-ol1"/>
                                                 <constraint firstAttribute="trailing" secondItem="3MW-Bw-egT" secondAttribute="trailing" id="uBq-qt-kW7"/>
-                                                <constraint firstItem="GTH-cd-AGe" firstAttribute="leading" secondItem="1lx-G1-qPf" secondAttribute="leadingMargin" constant="20" id="zEC-MN-Mfb"/>
+                                                <constraint firstItem="GTH-cd-AGe" firstAttribute="leading" secondItem="1lx-G1-qPf" secondAttribute="leadingMargin" constant="10" id="zEC-MN-Mfb"/>
                                                 <constraint firstItem="gcY-C6-QKn" firstAttribute="top" secondItem="3MW-Bw-egT" secondAttribute="bottom" id="zmy-ft-wMa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnHeightConstraint" destination="Ijp-06-q4y" id="21o-eh-Ttm"/>
+                                            <outlet property="btnWidthConstraint" destination="pBd-Va-PL6" id="K9w-1N-G5a"/>
                                             <outlet property="headImageView" destination="GTH-cd-AGe" id="wQa-O3-Ffh"/>
                                             <outlet property="messageButton" destination="gcY-C6-QKn" id="tnK-vh-WXP"/>
-                                            <outlet property="messageHeightConstraint" destination="Ijp-06-q4y" id="pB2-QW-fOP"/>
-                                            <outlet property="messageWidthConstraint" destination="pBd-Va-PL6" id="LmB-dH-eXr"/>
+                                            <outlet property="recordTimeLabel" destination="axG-EP-M7a" id="XqM-Sw-IAa"/>
                                             <outlet property="timeStampLabel" destination="3MW-Bw-egT" id="upn-YK-L8E"/>
                                         </connections>
                                     </tableViewCell>

@@ -30,7 +30,7 @@
             format.dateFormat = @"HH:mm";
             return [format stringFromDate:self.timestamp];
         }
-        return @"";
+        return @"刚刚";
     }
     else if (self.timestamp.isYesterday)
     {

@@ -11,6 +11,7 @@
 #import "ChatMessageViewController.h"
 #import "XMPPGroupCoreDataStorageObject.h"
 #import "ChineseToPinyin.h"
+#import "CHTitleView.h"
 
 @interface RosterController () <NSFetchedResultsControllerDelegate, UIAlertViewDelegate>
 {
@@ -92,6 +93,9 @@
 {
     [super viewDidLoad];
 
+    CHTitleView *view = [CHTitleView titleView];
+    [view setTitle:@"通讯录"];
+    self.navigationItem.titleView = view;
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
 

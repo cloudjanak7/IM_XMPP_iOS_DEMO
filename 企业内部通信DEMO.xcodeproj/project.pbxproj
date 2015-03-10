@@ -48,6 +48,7 @@
 		24943D0919E91F5F00F552F6 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3AB4919D7EC5900C75EF6 /* libxml2.dylib */; };
 		24943D0A19E91F6F00F552F6 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B3AB4519D7EAD200C75EF6 /* libresolv.dylib */; };
 		2494442619E9261A00F552F6 /* VCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2494442519E9261A00F552F6 /* VCardController.m */; };
+		24A2A7601AAE89DA00F5EB0F /* CHMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A2A75F1AAE89DA00F5EB0F /* CHMessageView.m */; };
 		24AC3AF91AA6E7E5001263B3 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC3AF81AA6E7E5001263B3 /* UserInfo.m */; };
 		24AC3B301AA6E93E001263B3 /* UIButton+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC3AFD1AA6E93E001263B3 /* UIButton+WF.m */; };
 		24AC3B311AA6E93E001263B3 /* UIImage+WF.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AC3AFF1AA6E93E001263B3 /* UIImage+WF.m */; };
@@ -235,12 +236,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2412B4981A1D9E3A00B49F05 /* ChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageCell.h; sourceTree = "<group>"; };
-		2412B4991A1D9E3A00B49F05 /* ChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageCell.m; sourceTree = "<group>"; };
-		2412B49C1A1DD58C00B49F05 /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextView.h; sourceTree = "<group>"; };
-		2412B49D1A1DD58C00B49F05 /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextView.m; sourceTree = "<group>"; };
-		2412B49F1A1DE37C00B49F05 /* EmoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmoteSelectorView.h; sourceTree = "<group>"; };
-		2412B4A01A1DE37C00B49F05 /* EmoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmoteSelectorView.m; sourceTree = "<group>"; };
+		2412B4981A1D9E3A00B49F05 /* ChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatMessageCell.h; path = ../ChatMessageCell.h; sourceTree = "<group>"; };
+		2412B4991A1D9E3A00B49F05 /* ChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatMessageCell.m; path = ../ChatMessageCell.m; sourceTree = "<group>"; };
+		2412B49C1A1DD58C00B49F05 /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputTextView.h; path = ../InputTextView.h; sourceTree = "<group>"; };
+		2412B49D1A1DD58C00B49F05 /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputTextView.m; path = ../InputTextView.m; sourceTree = "<group>"; };
+		2412B49F1A1DE37C00B49F05 /* EmoteSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmoteSelectorView.h; path = ../EmoteSelectorView.h; sourceTree = "<group>"; };
+		2412B4A01A1DE37C00B49F05 /* EmoteSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmoteSelectorView.m; path = ../EmoteSelectorView.m; sourceTree = "<group>"; };
 		2431B66C1AA84259008D4654 /* UIImage+CH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CH.h"; sourceTree = "<group>"; };
 		2431B66D1AA84259008D4654 /* UIImage+CH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CH.m"; sourceTree = "<group>"; };
 		2431B6791AA86C14008D4654 /* CHMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMainViewController.h; sourceTree = "<group>"; };
@@ -312,6 +313,8 @@
 		24943C8B19E91BDB00F552F6 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
 		2494442419E9261A00F552F6 /* VCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCardController.h; sourceTree = "<group>"; };
 		2494442519E9261A00F552F6 /* VCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCardController.m; sourceTree = "<group>"; };
+		24A2A75E1AAE89DA00F5EB0F /* CHMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHMessageView.h; sourceTree = "<group>"; };
+		24A2A75F1AAE89DA00F5EB0F /* CHMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHMessageView.m; sourceTree = "<group>"; };
 		24AC3AF71AA6E7E5001263B3 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		24AC3AF81AA6E7E5001263B3 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		24AC3AFB1AA6E93E001263B3 /* CategoryWF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryWF.h; sourceTree = "<group>"; };
@@ -701,12 +704,6 @@
 				24385C4D1A256A36006B1F47 /* Model */,
 				24F974D51A1C83E800D07E33 /* ChatMessageViewController.h */,
 				24F974D61A1C83E800D07E33 /* ChatMessageViewController.m */,
-				2412B4981A1D9E3A00B49F05 /* ChatMessageCell.h */,
-				2412B4991A1D9E3A00B49F05 /* ChatMessageCell.m */,
-				2412B49C1A1DD58C00B49F05 /* InputTextView.h */,
-				2412B49D1A1DD58C00B49F05 /* InputTextView.m */,
-				2412B49F1A1DE37C00B49F05 /* EmoteSelectorView.h */,
-				2412B4A01A1DE37C00B49F05 /* EmoteSelectorView.m */,
 			);
 			path = "聊天";
 			sourceTree = "<group>";
@@ -761,6 +758,14 @@
 				2431B6B61AA9B86C008D4654 /* CHTitleButton.m */,
 				2431B6B21AA9B177008D4654 /* CHBackButton.h */,
 				2431B6B31AA9B177008D4654 /* CHBackButton.m */,
+				24A2A75E1AAE89DA00F5EB0F /* CHMessageView.h */,
+				24A2A75F1AAE89DA00F5EB0F /* CHMessageView.m */,
+				2412B4981A1D9E3A00B49F05 /* ChatMessageCell.h */,
+				2412B4991A1D9E3A00B49F05 /* ChatMessageCell.m */,
+				2412B49C1A1DD58C00B49F05 /* InputTextView.h */,
+				2412B49D1A1DD58C00B49F05 /* InputTextView.m */,
+				2412B49F1A1DE37C00B49F05 /* EmoteSelectorView.h */,
+				2412B4A01A1DE37C00B49F05 /* EmoteSelectorView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2116,6 +2121,7 @@
 				24F961291AA71E6200B0E809 /* NSString+DDXML.m in Sources */,
 				24F9611A1AA71E6200B0E809 /* DDList.m in Sources */,
 				24F961111AA71E6200B0E809 /* XMPPTime.m in Sources */,
+				24A2A7601AAE89DA00F5EB0F /* CHMessageView.m in Sources */,
 				24F960F11AA71E6200B0E809 /* NSXMLElement+XEP_0059.m in Sources */,
 				24F960BD1AA71E6200B0E809 /* XMPPModule.m in Sources */,
 				24F961121AA71E6200B0E809 /* NSXMLElement+XEP_0203.m in Sources */,

@@ -144,9 +144,8 @@
     
     RelateMessage *msg = self.relateMsgs[indexPath.row];
     cell.textLabel.text = msg.bareJidStr;
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    format.dateFormat = @"EEE MMM dd HH:mm:ss";
     cell.detailTextLabel.text = msg.timeStampStr;
+    cell.imageView.image = [self loadUserImage:msg.bareJidPhoto];
     
     return cell;
 }
@@ -166,6 +165,18 @@
     NSData *myPhoto = [[[XMPPTool sharedXMPPTool]  xmppvCardAvatarModule] photoDataForJID:[XMPPJID jidWithString:myJID]];
     messageVC.myImage = [UIImage imageWithData:myPhoto];
     [self.navigationController pushViewController:messageVC animated:YES];
+}
+
+#pragma mark - private
+#pragma mark - 加载头像
+- (UIImage *)loadUserImage:(NSData *)photo
+{
+    //没有，从用户头像模块取用户头像数据
+    if (photo)
+    {
+        return [UIImage imageWithData:photo];
+    }
+    return [UIImage imageNamed:@"DefaultProfileHead"];
 }
 
 @end
