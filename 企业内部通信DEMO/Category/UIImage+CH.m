@@ -93,4 +93,9 @@
     return CGSizeMake(scaledWidth, scaledHeight);
 }
 
+- (UIImage *)stretchableImageWithSize:(CGSize)targetSize
+{
+    return nil;
+}
+
 @end

@@ -22,4 +22,11 @@
  */
 - (CGSize)imageSizeReturnByScallingAspectToMaxSize:(CGSize)targetSize;
 
+/**
+ *  拉伸图片
+ *
+ *  @param targetSize 目标的大小
+ */
+- (UIImage *)stretchableImageWithSize:(CGSize)targetSize;
+
 @end

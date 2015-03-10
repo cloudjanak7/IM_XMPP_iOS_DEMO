@@ -8,7 +8,6 @@
 
 #import "ChatMessageCell.h"
 #import "SoundTool.h"
-#import "UIImage+CH.h"
 #import "CHMessageFrame.h"
 #import "MessageObject.h"
 #import "CHMessageView.h"

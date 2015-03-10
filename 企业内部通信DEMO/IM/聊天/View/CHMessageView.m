@@ -9,6 +9,7 @@
 #import "CHMessageView.h"
 #import "CHMessageFrame.h"
 #import "MessageObject.h"
+#import "UIImage+CH.h"
 
 @interface CHMessageView ()
 {
@@ -25,6 +26,9 @@
 {
     [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
+    self.titleEdgeInsets = UIEdgeInsetsMake(10, 10, 20, 10);
+    self.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    
     _receiveImage = [UIImage imageNamed:@"ReceiverTextNodeBkg"];
     _receiveImageHL = [UIImage imageNamed:@"ReceiverTextNodeBkgHL"];
     _senderImage = [UIImage imageNamed:@"SenderTextNodeBkg"];
@@ -39,7 +43,8 @@
 
 - (UIImage *)stretcheImage:(UIImage *)img
 {
-    return [img stretchableImageWithLeftCapWidth:img.size.width * 0.5 topCapHeight:img.size.height * 0.6];
+//    return [img stretchableImageWithLeftCapWidth:img.size.width * 0.5 topCapHeight:img.size.height * 0.6];
+    return [img resizableImageWithCapInsets:UIEdgeInsetsMake(img.size.width * 0.6, img.size.width * 0.5, img.size.width * 0.3, img.size.width * 0.5)];
 }
 
 - (void)setMsgF:(CHMessageFrame *)msgF
@@ -67,7 +72,7 @@
     {
         case MessageTypeImage:
             self.imageView.hidden = NO;
-            [self setImage:self.msgF.msgObj.image forState:UIControlStateNormal];
+            [self setupImageTypeMessage];
             break;
         case MessageTypeRecord:
             self.imageView.hidden = NO;
@@ -87,10 +92,45 @@
         default:
             break;
     }
+}
+
+#pragma mark - private
+- (void)setupImageTypeMessage
+{
+    UIImage *maskImage = nil;
+    if (self.msgF.msgObj.isOutgoing)
+    {
+        maskImage = [UIImage imageNamed:@"SenderImageNodeMask1"];
+    }
+    else
+    {
+        maskImage = [UIImage imageNamed:@"ReceiverImageNodeMask1"];
+    }
+    maskImage = [self stretcheImage:maskImage];
     
-    //2.4重新调整布局
-//    [self setNeedsDisplay];
+    UIImage *image = [self imageWithImage:self.msgF.msgObj.image maskImage:maskImage];
+//    [self setImage:image forState:UIControlStateNormal];
+    [self setImage:self.msgF.msgObj.image forState:UIControlStateNormal];
+}
+
+#pragma mark mask切图
+- (UIImage *)imageWithImage:(UIImage *)image maskImage:(UIImage *)maskImage
+{
+    CGImageRef maskRef = maskImage.CGImage;
+    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
+                                        CGImageGetHeight(maskRef),
+                                        CGImageGetBitsPerComponent(maskRef),
+                                        CGImageGetBitsPerPixel(maskRef),
+                                        CGImageGetBytesPerRow(maskRef),
+                                        CGImageGetDataProvider(maskRef), NULL, false);
+    NSLog(@"%@", mask);
+    CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
+    UIImage *destImage = [UIImage imageWithCGImage:masked];
     
+    CGImageRelease(mask);
+    CGImageRelease(masked);
+    
+    return destImage;
 }
 
 @end

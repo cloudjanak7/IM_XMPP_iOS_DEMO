@@ -274,6 +274,7 @@
 - (IBAction)playRecord:(UIButton *)btn
 {
     ChatMessageCell *cell = (ChatMessageCell *)btn.superview.superview;
+
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     CHMessageFrame *msgF = self.messageList[indexPath.row];
     if (msgF.msgObj.messageType == MessageTypeRecord) {
@@ -286,7 +287,8 @@
         [_player prepareToPlay];
         [_player play];
     }
-    CHLog(@"btn - %@", [btn.superview.superview class]);
+
+    CHLog(@"%f,\n %f,\n %@,\n %@,\n %@", btn.contentEdgeInsets.right, btn.contentEdgeInsets.left, NSStringFromCGRect(btn.titleLabel.frame), NSStringFromCGRect(btn.frame), NSStringFromCGRect(btn.imageView.frame));
 }
 
 #pragma mark 点击添加照片按钮

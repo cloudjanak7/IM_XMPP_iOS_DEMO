@@ -50,13 +50,13 @@
     {
         size = _msgS;
     }
-    if (size.height + 50.0 > 80.0)
+    if (size.height + 40.0 > 65.0)
     {
         _cellHeight = size.height + 50.0;
     }
     else
     {
-        _cellHeight = 80;
+        _cellHeight = 65.0;
     }
 }
 

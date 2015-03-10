@@ -172,34 +172,34 @@ singleton_implementation(XMPPTool)
     [self postNotification:XMPPResultTypeConnecting];
     
 #warning 手动睡眠2秒
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString *user = nil;
-        if (self.isRegisterOperation)
-        {
-            user = [UserInfo sharedUserInfo].registerUser;
-        }
-        else
-        {
-            user = [UserInfo sharedUserInfo].user;
-        }
-        
-        NSString *hostName = [UserInfo sharedUserInfo].hostName;
-        
-        //设置JID
-        _xmppStream.myJID = [XMPPJID jidWithUser:user domain:XMPPDomain resource:@"iPhone"];
-        
-        //设置服务器域名
-        _xmppStream.hostName = hostName;
-        //设置服务器端口
-        _xmppStream.hostPort = 5222;
-        
-        //连接
-        NSError *error;
-        if (![_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error])
-        {
-            CHLog(@"error:%@", error.debugDescription);
-        }
-    });
+
+    NSString *user = nil;
+    if (self.isRegisterOperation)
+    {
+        user = [UserInfo sharedUserInfo].registerUser;
+    }
+    else
+    {
+        user = [UserInfo sharedUserInfo].user;
+    }
+    
+    NSString *hostName = [UserInfo sharedUserInfo].hostName;
+    
+    //设置JID
+    _xmppStream.myJID = [XMPPJID jidWithUser:user domain:XMPPDomain resource:@"iPhone"];
+    
+    //设置服务器域名
+    _xmppStream.hostName = hostName;
+    //设置服务器端口
+    _xmppStream.hostPort = 5222;
+    
+    //连接
+    NSError *error;
+    if (![_xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error])
+    {
+        CHLog(@"error:%@", error.debugDescription);
+    }
+
 }
 
 #pragma mark 判断IQ是否为SI请求
