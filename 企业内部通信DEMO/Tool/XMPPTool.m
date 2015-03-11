@@ -8,6 +8,7 @@
 
 #import "XMPPTool.h"
 #import "XMPP.h"
+#import "UIStoryboard+CH.h"
 
 NSString *const CHLoginStatusChangeNotification = @"CHLoginStatusNotification";
 

@@ -22,6 +22,7 @@
     [self setupNavTheme];
     //2.设置导航栏按钮主题
     [self setupBarButtonItemTheme];
+
 }
 
 /**

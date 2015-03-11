@@ -63,10 +63,20 @@
         cell.recordTimeLabel.hidden = YES;
     }
     
+    if (msgObj.messageType == MessageTypeImage)
+    {
+        cell.btnHeightConstraint.constant = msgF.msgS.height;
+        cell.btnWidthConstraint.constant = msgF.msgS.width;
+    }
+    else
+    {
+        cell.btnHeightConstraint.constant = msgF.msgS.height + 30;
+        cell.btnWidthConstraint.constant = msgF.msgS.width + 30;
+    }
+    
     cell.messageButton.msgF = msgF;
     cell.messageButton.autoresizesSubviews = NO;
-    cell.btnHeightConstraint.constant = msgF.msgS.height + 30;
-    cell.btnWidthConstraint.constant = msgF.msgS.width + 30;
+    
     
     cell.timeStampLabel.text = msgObj.timeStampStr;
     

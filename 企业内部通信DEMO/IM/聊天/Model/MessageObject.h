@@ -23,7 +23,7 @@ typedef enum
     MessageTypeImage
 } MessageType;
 
-#define ChatMessageImageSize CGSizeMake(100, 100)
+#define ChatMessageImageSize CGSizeMake(112, 100)
 
 @interface MessageObject : NSObject
 

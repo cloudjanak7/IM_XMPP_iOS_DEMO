@@ -53,6 +53,10 @@
     if (size.height + 40.0 > 65.0)
     {
         _cellHeight = size.height + 50.0;
+        if (msgObj.messageType == MessageTypeImage)
+        {
+            _cellHeight = size.height + 20.0;
+        }
     }
     else
     {
@@ -72,8 +76,9 @@
 - (CGSize)cellForImageMessage:(MessageObject *)msgObj
 {
     NSData *data = [[NSData alloc] initWithBase64EncodedString:msgObj.fileDataStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    msgObj.image = [UIImage imageWithData:data];
-    return [msgObj.image imageSizeReturnByScallingAspectToMaxSize:ChatMessageImageSize];
+    UIImage *image = [UIImage imageWithData:data];
+    msgObj.image = [image imageByScallingAspectToMinSize:ChatMessageImageSize];
+    return [msgObj.image imageSizeReturnByScallingAspectToMinSize:ChatMessageImageSize];
 }
 
 /** 录音消息 */

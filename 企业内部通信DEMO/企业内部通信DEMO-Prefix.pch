@@ -17,7 +17,6 @@
 
 #import "NSString+Helper.h"
 #import "UserInfo.h"
-#import "CategoryWF.h"
 #import "XMPPTool.h"
 #import "NSMutableDictionary+CH.h"
 #import "MJExtension.h"

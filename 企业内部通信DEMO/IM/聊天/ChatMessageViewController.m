@@ -270,6 +270,23 @@
 }
 
 #pragma mark - ***************点击按钮响应
+#pragma mark 点击添加照片按钮
+- (void)clickAddPhoto
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.delegate = self;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+    else
+    {
+        NSLog(@"摄像头不可用");
+    }
+}
+
+#pragma mark *****声音模组
 #pragma mark 播放录音
 - (IBAction)playRecord:(UIButton *)btn
 {
@@ -288,24 +305,6 @@
         [_player play];
     }
 
-    CHLog(@"%f,\n %f,\n %@,\n %@,\n %@", btn.contentEdgeInsets.right, btn.contentEdgeInsets.left, NSStringFromCGRect(btn.titleLabel.frame), NSStringFromCGRect(btn.frame), NSStringFromCGRect(btn.imageView.frame));
-}
-
-#pragma mark 点击添加照片按钮
-- (void)clickAddPhoto
-{
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-    {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.delegate = self;
-        [self presentViewController:picker animated:YES completion:nil];
-    }
-    else
-    {
-        NSLog(@"摄像头不可用");
-    }
 }
 
 #pragma mark 开始录音
@@ -356,7 +355,7 @@
 #pragma mark - UIImagePicker Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = info[UIImagePickerControllerEditedImage];
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
     NSString *imageType = info[UIImagePickerControllerMediaType];
 
     [self dismissViewControllerAnimated:YES completion:^{

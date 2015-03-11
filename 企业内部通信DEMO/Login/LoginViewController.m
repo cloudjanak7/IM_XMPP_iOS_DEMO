@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "NSString+Helper.h"
 #import "MBProgressHUD+MJ.h"
+#import "UIImage+CH.h"
+#import "UIStoryboard+CH.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -177,6 +179,7 @@
     [self dismissViewControllerAnimated:NO completion:nil];
     //登录成功来到主界面
     [UIStoryboard showInitialVCWithName:@"Main"];
+    
 }
 
 @end

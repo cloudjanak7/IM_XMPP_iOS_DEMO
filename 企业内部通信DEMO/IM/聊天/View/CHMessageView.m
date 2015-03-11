@@ -35,16 +35,10 @@
     _senderImageHL = [UIImage imageNamed:@"SenderTextNodeBkgHL"];
     
     //处理图像拉伸(因为iOS 6不支持图像切片)
-    _receiveImage = [self stretcheImage:_receiveImage];
-    _receiveImageHL = [self stretcheImage:_receiveImageHL];
-    _senderImageHL = [self stretcheImage:_senderImageHL];
-    _senderImage = [self stretcheImage:_senderImage];
-}
-
-- (UIImage *)stretcheImage:(UIImage *)img
-{
-//    return [img stretchableImageWithLeftCapWidth:img.size.width * 0.5 topCapHeight:img.size.height * 0.6];
-    return [img resizableImageWithCapInsets:UIEdgeInsetsMake(img.size.width * 0.6, img.size.width * 0.5, img.size.width * 0.3, img.size.width * 0.5)];
+    _receiveImage = [_receiveImage stretcheImage];
+    _receiveImageHL = [_receiveImageHL stretcheImage];
+    _senderImageHL = [_senderImageHL stretcheImage];
+    _senderImage = [_senderImage stretcheImage];
 }
 
 - (void)setMsgF:(CHMessageFrame *)msgF
@@ -72,10 +66,14 @@
     {
         case MessageTypeImage:
             self.imageView.hidden = NO;
+            self.titleLabel.hidden = YES;
+            [self setTitle:nil forState:UIControlStateNormal];
             [self setupImageTypeMessage];
             break;
         case MessageTypeRecord:
             self.imageView.hidden = NO;
+            self.titleLabel.hidden = YES;
+            [self setTitle:nil forState:UIControlStateNormal];
             if (self.msgF.msgObj.isOutgoing)
             {
                 [self setImage:[UIImage imageNamed:@"SenderVoiceNodePlaying003"] forState:UIControlStateNormal];
@@ -87,6 +85,7 @@
         case MessageTypeText:
             [self setImage:nil forState:UIControlStateNormal];
             self.imageView.hidden = YES;
+            self.titleLabel.hidden = NO;
             [self setTitle:self.msgF.msgObj.messageText forState:UIControlStateNormal];
             break;
         default:
@@ -106,11 +105,15 @@
     {
         maskImage = [UIImage imageNamed:@"ReceiverImageNodeMask1"];
     }
-    maskImage = [self stretcheImage:maskImage];
-    
+    maskImage = [maskImage stretcheImage];
+    maskImage = [maskImage imageByScallingAspectToMaxSize:self.msgF.msgObj.image.size];
+//    CHLog(@"%@", NSStringFromCGSize(maskImage.size));
+//    CHLog(@"%@", NSStringFromCGSize(self.msgF.msgObj.image.size));
     UIImage *image = [self imageWithImage:self.msgF.msgObj.image maskImage:maskImage];
-//    [self setImage:image forState:UIControlStateNormal];
-    [self setImage:self.msgF.msgObj.image forState:UIControlStateNormal];
+    CHLog(@"%@", NSStringFromCGSize(image.size));
+//    [self setBackgroundImage:image forState:UIControlStateNormal];
+    [self setImage:image forState:UIControlStateNormal];
+//    [self setImage:self.msgF.msgObj.image forState:UIControlStateNormal];
 }
 
 #pragma mark mask切图
@@ -123,7 +126,7 @@
                                         CGImageGetBitsPerPixel(maskRef),
                                         CGImageGetBytesPerRow(maskRef),
                                         CGImageGetDataProvider(maskRef), NULL, false);
-    NSLog(@"%@", mask);
+
     CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
     UIImage *destImage = [UIImage imageWithCGImage:masked];
     
