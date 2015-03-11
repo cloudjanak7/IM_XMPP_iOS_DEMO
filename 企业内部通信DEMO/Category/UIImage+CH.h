@@ -36,7 +36,7 @@
 - (CGSize)imageSizeReturnByScallingAspectToMinSize:(CGSize)targetSize;
 
 /**
- *  拉伸图片
+ *  拉伸图片（暂未实现）
  *
  *  @param targetSize 目标的大小
  */
